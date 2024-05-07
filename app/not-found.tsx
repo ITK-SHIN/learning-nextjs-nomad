@@ -1,12 +1,10 @@
-import React from "react";
-import Navigation from "../components/navigation";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Not found",
+};
 const NotFound = () => {
-  return (
-    <div>
-      <Navigation />
-    </div>
-  );
+  return <div>Not Found!!!</div>;
 };
 
 export default NotFound;
