@@ -1,30 +1,25 @@
-"use client";
-import { useEffect, useState } from "react";
+export const metadata = {
+  title: "Home",
+};
 
-export default function Page() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
+const URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
 
-  const getMovies = async () => {
-    try {
-      const res = await fetch(
-        "https://nomad-movies.nomadcoders.workers.dev/movies"
-      );
-      const data = await res.json();
-      setMovies(data);
-      setIsLoading(false);
-    } catch (error) {
-      throw new Error("fetch failed");
-    }
-  };
+const getMovies = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 5000)); // 그냥 시간 지연을 위한 코드 5초
+  console.log("I'm fetching 서버에서 발생");
+  const res = await fetch(URL);
+  const data = await res.json();
 
-  useEffect(() => {
-    getMovies();
-  }, []);
+  return data;
+};
 
+const HomePage = async () => {
+  const movies = await getMovies();
   return (
     <div>
-      <h1>{isLoading ? "Loading... " : JSON.stringify(movies)}</h1>
+      <h1>{JSON.stringify(movies)}</h1>
     </div>
   );
-}
+};
+
+export default HomePage;
