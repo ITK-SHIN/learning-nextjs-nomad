@@ -1,3 +1,4 @@
+import "../styles/global.css";
 import { Metadata } from "next";
 import Navigation from "../components/navigation";
 
@@ -17,7 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <h1>App</h1>
         <Navigation />
         {children}
       </body>

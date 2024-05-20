@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import styles from "../components/navigation.module.css";
 
 const Navigation = () => {
   const path = usePathname();
@@ -9,7 +10,7 @@ const Navigation = () => {
   console.log(path);
   return (
     <>
-      <nav>
+      <nav className={styles.nav}>
         <ul>
           <li>
             <Link href="/">Home</Link> {path == "/" ? "🔥" : null}
